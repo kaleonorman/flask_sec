@@ -7,7 +7,7 @@ from app.forms import LoginForm
 def index():
     data = request.form
     print('from data', data)
-    user = {'username' : 'Bart_sucks!!!!!!!!!!'}
+    user = {'username' : 'Kailua'}
     return render_template('index.html', title="Whatever", user=user)
 @app.route('/register')
 def register():
