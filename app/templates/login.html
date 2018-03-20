@@ -3,17 +3,23 @@
 {% block content %}
     <h1>Welcome</h1>
 
-    <form action="" method="POST">
+    <form action="" method="post">
         {{ form.hidden_tag() }}
 
         <p>
             {{ form.username.label }}<br>
-            {{ form.username(size=32) }}
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: pink;">[{{error}}]</span>
+            {% endfor %}
         </p>
 
         <p>
             {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
+            {{ form.password(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: pink;">[{{error}}]</span>
+            {% endfor %}
         </p>
 
         <p>
