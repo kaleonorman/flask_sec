@@ -13,3 +13,29 @@
 
 ### Start flask server
 ```flask run```
+
+### Init manage.py
+```python manage.py db init```
+
+### Migrate manage.py
+```python manage.py db migrate```
+
+### Upgrade manage.py
+```python manage.py db upgrade```
+
+##Python ripl
+```from app import db```
+```from app.models import User```
+```users = User.query.all()```
+```for user in users: print(user.username)```
+```for user in users: print(user.password_hash)```
+
+##psql
+
+```\c flask_sec```
+
+### List Database
+```\dt```
+
+### Open Table
+```\d user```
