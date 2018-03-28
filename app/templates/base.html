@@ -11,8 +11,13 @@
 </head>
 <body>
     <div>Flask-Sec: <a href="{{ url_for('index') }}">Home</a>
-                    <a href="/register">Register</a>
-                    <a href="{{url_for('login') }}">Login</a>
+                    {% if current_user.is_anonymous %}
+                    <a href="{{ url_for('login') }}">Login</a>
+                    {% else %}
+                    <a href="{{ url_for('logout') }}">logout</a
+                    {% endif %}>
+                    
+
     </div>
     <hr>
     {% with messages = get_flashed_messages() %}
