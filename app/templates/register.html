@@ -37,7 +37,7 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}            
         </p>
-        <p>{{ form.submit }}</p>
+        <p>{{ form.submit() }}</p>
 
     </form>
     <p>Need to create an account? <a href="{{ url_for('register') }}">Click here to register</a></p>
