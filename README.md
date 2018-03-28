@@ -24,6 +24,7 @@
 ```python manage.py db upgrade```
 
 ##Python ripl
+### Add User and Password
 ``` from app import db```
 ```>>> from app.models import User```
 ```>>> user = User(username='kaleo', email='k@gmail.com')```

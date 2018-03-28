@@ -1,19 +1,31 @@
 from flask import render_template, request, flash, redirect, url_for
 from app import app
-from flask_login import current_user, login_user, logout_user
-from app.forms import LoginForm
+from flask_login import current_user, login_user, logout_user, login_required
+from app.forms import LoginForm, Registration
 from app.models import User
 
 @app.route('/')
 @app.route('/index', methods= ['GET', 'POST'])
+@login_required
 def index():
     data = request.form
     print('from data', data)
-    user = {'username' : 'Kailua'}
-    return render_template('index.html', title="Whatever", user=user)
-@app.route('/register')
+   
+    
+    return render_template('index.html', title="Whatever")
+@app.route('/register', methods= ['GET', 'POST'])
 def register():
-    return render_template('register.html', title="Registration")
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = Registration()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Account added successfully')
+        return redirect(url_for('login'))
+    return render_template('register.html', title="Registration", form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
