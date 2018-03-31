@@ -45,7 +45,10 @@
 
 
 
-##psql
+##postgres/psql
+
+```sudo su postgres```
+```psql```
 
 ```\c flask_sec```
 
